@@ -1,7 +1,7 @@
 package com.example.kotlinrestapi.presentation.controller
 
-import com.example.kotlinrestapi.infrastructure.jpa.entity.Article
 import com.example.kotlinrestapi.application.repository.ArticleRepository
+import com.example.kotlinrestapi.infrastructure.jpa.entity.Article
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -27,8 +27,10 @@ class ArticleController(private val articleRepository: ArticleRepository) {
     }
 
     @PutMapping("/articles/{id}")
-    fun updateArticle(@PathVariable(value = "id") id: Long,
-                        @Valid @RequestBody newArticle: Article): ResponseEntity<Article> {
+    fun updateArticle(
+        @PathVariable(value = "id") id: Long,
+        @Valid @RequestBody newArticle: Article
+    ): ResponseEntity<Article> {
 
         return articleRepository.findById(id).map { existingArticle ->
             val updateArticle: Article = existingArticle
