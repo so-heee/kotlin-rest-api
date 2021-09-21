@@ -1,4 +1,4 @@
-package com.example.kotlinrestapi
+package com.example.api
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class KotlinRestApiApplication
 
 fun main(args: Array<String>) {
-	runApplication<KotlinRestApiApplication>(*args)
+    runApplication<KotlinRestApiApplication>(*args)
 }

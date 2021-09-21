@@ -1,4 +1,4 @@
-package com.example.kotlinrestapi.infrastructure.jpa.entity
+package com.example.api.domain.model.entity
 
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -10,7 +10,7 @@ import javax.validation.constraints.NotBlank
 data class Article(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
-    
+
     @get: NotBlank
     val title: String = "",
 
