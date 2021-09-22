@@ -1,4 +1,4 @@
-package com.example.api.domain.model.dto.response
+package com.example.api.application.dto.response
 
 data class ArticleModel(
     var id: Long,
