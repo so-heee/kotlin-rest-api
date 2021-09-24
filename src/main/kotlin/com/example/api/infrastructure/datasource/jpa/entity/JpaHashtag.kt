@@ -1,20 +1,20 @@
 package com.example.api.infrastructure.datasource.jpa.entity
 
-import com.example.api.domain.model.entity.User
+import com.example.api.domain.model.entity.Hashtag
 import javax.persistence.*
 import javax.validation.constraints.NotBlank
 
 @Entity
-@Table(name = "user")
-data class JpaUser(
+@Table(name = "hashtags")
+data class JpaHashtag(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
 
     @get: NotBlank
-    val name: String = "",
+    val tag: String = "",
 ) {
-    fun toDomainEntity(): User = User(
+    fun toDomainEntity(): Hashtag = Hashtag(
         id = id,
-        name = name
+        tag = tag
     )
 }

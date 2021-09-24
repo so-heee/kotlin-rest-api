@@ -1,0 +1,117 @@
+openapi: 3.0.3
+info:
+  title: Kotlin API
+  description: Kotlin API Reference.
+  termsOfService: https://xxxx.jp/
+  contact:
+    name: aaa
+    url: https://www.aaa.ne.jp
+    email: aaa@gmail.com
+  license:
+    name: aaa Co. Ltd
+    url: https://www.aaa.ne.jp
+  version: 1.0.0
+
+servers:
+  - url: https://dev.api.jp/v1
+    description: Development server
+  - url: https://stg.api.jp/v1
+    description: Staging server
+  - url: https://prod.api.jp/v1
+    description: Production server
+
+paths:
+
+  /users:
+    get:
+      summary: ユーザー一覧取得
+      description: |
+        ユーザーのリストを返します
+      operationId: getUsers
+      responses:
+        200:
+          description: 成功時
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Users'
+    post:
+      summary: ユーザー登録
+      description: |
+        ユーザーを登録します
+      operationId: createUsers
+      responses:
+        200:
+          description: 成功時
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /users/{userId}:
+    get:
+      summary: ユーザー取得
+      description: |
+        指定されたID（ユーザー）のユーザーに関する様々な情報を返します
+      operationId: getUserByID
+      parameters:
+        - name: userId
+          in: path
+          description: userId
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: 成功時
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+components:
+  schemas:
+
+    Page:
+      type: object
+      required:
+        - now_page
+        - result_count
+        - total_count
+      properties:
+        now_page:
+          type: integer
+          format: int32
+          example: 0
+          description: 現在のページ
+        result_count:
+          type: integer
+          format: int32
+          example: 10
+          description: ページ内件数
+        total_count:
+          type: integer
+          format: int64
+          example: 1234
+          description: 全体数
+
+    User:
+      type: object
+      properties:
+        user_id:
+          type: string
+          example: XXXX
+          description: firebaseのユーザーID
+        user_name:
+          type: string
+          example: XXXX
+          description: ユーザー名
+
+    Users:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/Page'
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'

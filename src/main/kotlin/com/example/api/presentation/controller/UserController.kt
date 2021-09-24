@@ -1,23 +1,23 @@
 package com.example.api.presentation.controller
 
-import com.example.api.application.dto.response.UserModel
-import com.example.api.application.service.UserApplicationService
-import org.springframework.beans.factory.annotation.Autowired
+import com.example.api.openapi.api.UsersApi
+import com.example.api.openapi.model.User
+import com.example.api.openapi.model.Users
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/api")
-class UserController() {
+class UserController : UsersApi {
 
-    @Autowired
-    lateinit var userApplicationService: UserApplicationService
+    override fun getUsers(): ResponseEntity<Users> {
+        TODO("Not yet implemented")
+    }
 
-    @GetMapping("/users/{id}")
-    fun getArticleById(@PathVariable(value = "id") id: Long): ResponseEntity<UserModel> {
-        return userApplicationService.getUser(id)
+    override fun getUserByID(userId: String): ResponseEntity<User> {
+        TODO("Not yet implemented")
+    }
+
+    override fun createUsers(): ResponseEntity<User> {
+        TODO("Not yet implemented")
     }
 }
