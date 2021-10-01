@@ -11,14 +11,8 @@ info:
     name: aaa Co. Ltd
     url: https://www.aaa.ne.jp
   version: 1.0.0
-
 servers:
-  - url: https://dev.api.jp/v1
-    description: Development server
-  - url: https://stg.api.jp/v1
-    description: Staging server
-  - url: https://prod.api.jp/v1
-    description: Production server
+  - url: http://localhost:8080/api
 
 paths:
 
@@ -67,6 +61,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
+        404:
+          $ref: "#/components/responses/NotFound"
 
 components:
   schemas:
@@ -115,3 +111,51 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/User'
+
+    Error:
+      type: object
+      properties:
+        timestamp:
+          type: string
+        status:
+          type: string
+        error:
+          type: string
+        message:
+          type: string
+        detail:
+          type: string
+        path:
+          type: string
+      required:
+        - timestamp
+        - status
+        - error
+        - path
+
+  responses:
+    BadRequest:
+      description: "BadRequest"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    Forbidden:
+      description: "Forbidden – The server understood the request, but is refusing it or the
+        access is not allowed"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    NotFound:
+      description: "Not found – There is no resource behind the URI"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    InternalServerError:
+      description: "Internal server error"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"

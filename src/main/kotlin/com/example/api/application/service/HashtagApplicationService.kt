@@ -10,5 +10,5 @@ interface HashtagApplicationService {
      * @param id
      * @return ResponseEntity<HashtagModel>
      */
-    fun getUser(id: Long): ResponseEntity<HashtagModel>
+    fun getHashtag(id: Long): ResponseEntity<HashtagModel>
 }

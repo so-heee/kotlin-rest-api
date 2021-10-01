@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service
 class HashtagApplicationServiceImpl(val hashtagRepository: HashtagRepository) :
     HashtagApplicationService {
 
-    override fun getUser(id: Long): ResponseEntity<HashtagModel> {
-        return hashtagRepository.fetchUserById(id)
+    override fun getHashtag(id: Long): ResponseEntity<HashtagModel> {
+        return hashtagRepository.fetchHashtagById(id)
             .let { ResponseEntity.ok(it?.toModel()) }
     }
 }

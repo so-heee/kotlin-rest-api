@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component
 @Component
 class HashtagRepositoryImpl(private val jpaHashtagRepository: JpaHashtagRepository) :
     HashtagRepository {
-    override fun fetchUserById(id: Long): Hashtag? {
+    override fun fetchHashtagById(id: Long): Hashtag? {
         return jpaHashtagRepository.findById(id).orElse(null)?.toDomainEntity()
     }
 }

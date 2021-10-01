@@ -18,6 +18,6 @@ class HashtagController() {
 
     @GetMapping("/hashtags/{id}")
     fun getArticleById(@PathVariable(value = "id") id: Long): ResponseEntity<HashtagModel> {
-        return hashtagApplicationService.getUser(id)
+        return hashtagApplicationService.getHashtag(id)
     }
 }

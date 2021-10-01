@@ -39,9 +39,10 @@ openApiGenerate {
     outputDir.set(generatedSourcesDir)
     apiPackage.set("com.example.api.openapi.api")
     modelPackage.set("com.example.api.openapi.model")
+    modelNameSuffix.set("Dto")
 
     configOptions.apply {
-        //        put("serializableModel", "true")
+        put("serializableModel", "true")
         //        put("serializationLibrary", "gson")
         put("interfaceOnly", "true")
         put("skipDefaultInterface", "true")
